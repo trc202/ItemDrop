@@ -1,5 +1,4 @@
 package me.trc202.ItemDrop;
-
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -23,10 +22,13 @@ public class InvInteract extends PlayerListener {
 				if(myblock.getTypeId() == 54 || myblock.getTypeId() == 61 || myblock.getTypeId() == 62 || myblock.getTypeId() == 23)
 				{
 					player.sendMessage(ChatColor.RED + "You clicked a chest, furnace, or despencer!");
-					if(player.getInventory().contains(7))
-					{
-						player.getInventory().remove(7);
-						player.sendMessage(ChatColor.RED + "Bedrock Removed");
+					for (int counter = 0; counter < plugin.blockdisabled.size(); counter = counter+1) 
+					{   
+					    if(player.getInventory().contains(plugin.blockdisabled.get(counter)))
+					    {
+					    	player.getInventory().remove(plugin.blockdisabled.get(counter));
+					    	player.sendMessage(ChatColor.RED + "Offending Item removed");
+					    }
 					}
 				}
 			}

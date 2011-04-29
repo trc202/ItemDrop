@@ -1,5 +1,7 @@
 package me.trc202.ItemDrop;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import com.nijiko.permissions.PermissionHandler;
 import com.nijikokun.bukkit.Permissions.Permissions;
@@ -18,7 +20,8 @@ public class ItemD extends JavaPlugin {
 	private final IDBlockListener BlockListener = new IDBlockListener(this);
 	private static final Logger log = Logger.getLogger("Minecraft");
 	public static PermissionHandler Permissions = null;
-	public int IDEnable = 1;
+	List<Integer> blockdisabled = new ArrayList<Integer>(); //Contains all blocks disabled by ItemDrop
+	public int IDEnable = 1; // 1 for enabled 0 for disabled
 	
 	public static PermissionHandler permissionHandler;
 	public void onEnable() {
@@ -28,8 +31,9 @@ public class ItemD extends JavaPlugin {
 		pm.registerEvent(Event.Type.PLAYER_PICKUP_ITEM, PickListener, Event.Priority.Normal, this);
 		pm.registerEvent(Event.Type.BLOCK_PLACE, BlockListener, Event.Priority.Normal, this);
 		IDEnable = 1;
-		
 		setupPermissions();
+		blockdisabled.add(new Integer(7));
+		blockdisabled.add(new Integer(1));
 		log.info("Item drop 1.0 enabled");
 	}
 	public void onDisable() {

@@ -10,7 +10,9 @@ If permissions is not found it defaults to OPs.
 
 
 TODO:
-	Allow slection of block types
+	Allow selection of block types
 	Only destroy items when they are moved into a chest
 	Destroy items on death
-	
+	Stop spamming users when they try to pickup an item
+	Allow selection of block types from ingame.(op's or admins only)
+	Save block selection types to file

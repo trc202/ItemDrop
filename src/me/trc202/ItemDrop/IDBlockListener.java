@@ -13,7 +13,7 @@ public class IDBlockListener extends BlockListener{
 	public void onBlockPlace(BlockPlaceEvent event)
 	{
 		Player player = event.getPlayer(); //Get player involved in the event (might break if entity placing block is not a player)
-		if(event.getBlockPlaced().getTypeId() == 7)
+		if(plugin.blockdisabled.contains(event.getBlockPlaced().getTypeId()))//Checks to see if the item is blacklisted
 		{
 			if(!plugin.check(player, "ItemDrop.allow"))// checks to see if the user has permission
 			{// user has no permission

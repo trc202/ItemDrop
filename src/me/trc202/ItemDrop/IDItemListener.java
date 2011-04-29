@@ -14,9 +14,9 @@ public class IDItemListener extends PlayerListener {
 		Player player = event.getPlayer(); //Creates object player from class Player, Retrieves player who triggered event
 		if(plugin.IDEnable == 1)
 		{
-				if(event.getItemDrop().getItemStack().getTypeId() == 7) //Checks to see if item dropped is bedrock
+				if(plugin.blockdisabled.contains(event.getItemDrop().getItemStack().getTypeId())) //Checks to see if item dropped is bedrock
 				{
-					player.sendMessage(ChatColor.RED + "Bedrock destroyed"); //Notify's the player
+					player.sendMessage(ChatColor.RED + "offending item destroyed"); //Notify's the player
 					event.getItemDrop().remove(); //Removes bedrock
 				}
 				else
