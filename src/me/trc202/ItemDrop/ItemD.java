@@ -46,8 +46,7 @@ public class ItemD extends JavaPlugin {
 				this.permissionHandler = ((Permissions) permissionsPlugin).getHandler();
 			} 
 			else {
-				//IDEnable = 0;
-				log.info("Permission system not detected. Item Drop is disabled");
+				log.info("Permission system not detected. Defaulting to OP");
 			}
 		}
 	}
