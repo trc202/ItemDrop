@@ -1,0 +1,9 @@
+This Plugin was created to be an addon to LogBlock a minecraft BigBrother alternative.
+This plugin prevents bedrock from making its way into the server and into your players hands.
+When you drop bedrock the item is destroyed.
+When you access a chest the bedrock is removed from your inventory.
+When you die the bedrock is dropped, however only those with the ItemDrop.allow permission can pick it up(or those with op).
+Only those who have the ItemDrop.allow permission can place bedrock.
+This plugin has permissions support. The only permission is 
+ItemDrop.allow - Allows players to pickup bedrock and place it
+If permissions is not found it defaults to OPs.
