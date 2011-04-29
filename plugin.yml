@@ -1,4 +1,4 @@
-name: ID
-main: me.trc202.ItemDrop.ItemDrop
+name: ItemDrop
+main: me.trc202.ItemDrop.ItemD
 version: 1.0
 commands:
