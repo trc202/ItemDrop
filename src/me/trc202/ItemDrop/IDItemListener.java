@@ -6,8 +6,8 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerListener;
 
 public class IDItemListener extends PlayerListener {
-	public static ID plugin;
-	public IDItemListener(ID id){
+	public static ItemD plugin;
+	public IDItemListener(ItemD id){
 		plugin = id;
 	}
 	public void onPlayerDropItem(PlayerDropItemEvent event){ //Overrides the default Item drop event

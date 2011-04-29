@@ -6,8 +6,8 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.BlockListener;;
 
 public class IDBlockListener extends BlockListener{
-	public static ID plugin;
-	public IDBlockListener(ID instance){
+	public static ItemD plugin;
+	public IDBlockListener(ItemD instance){
 		plugin = instance;
 	}
 	public void onBlockPlace(BlockPlaceEvent event)

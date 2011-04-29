@@ -1,7 +1,4 @@
 name: ID
-main: me.trc202.ItemDrop.ID
+main: me.trc202.ItemDrop.ItemDrop
 version: 1.0
 commands:
-    TD:
-       description: Torch Destroy
-       useage: /TD

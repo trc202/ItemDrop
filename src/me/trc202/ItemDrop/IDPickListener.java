@@ -6,8 +6,8 @@ import org.bukkit.event.player.PlayerListener;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
 public class IDPickListener extends PlayerListener {
-	public static ID plugin;
-	public IDPickListener(ID instance){
+	public static ItemD plugin;
+	public IDPickListener(ItemD instance){
 		plugin = instance;
 	}
 	public void onPlayerPickupItem(PlayerPickupItemEvent event) //Event that happens on item pickup

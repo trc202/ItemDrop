@@ -11,7 +11,7 @@ import org.bukkit.event.Event;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class ID extends JavaPlugin {
+public class ItemD extends JavaPlugin {
 	private final IDItemListener PlayerListener = new IDItemListener(this);
 	private final InvInteract InvListener = new InvInteract(this);
 	private final IDPickListener PickListener = new IDPickListener(this);

@@ -9,8 +9,8 @@ import org.bukkit.event.player.PlayerListener;
 
 
 public class InvInteract extends PlayerListener {
-	public static ID plugin;
-	public InvInteract(ID instance){
+	public static ItemD plugin;
+	public InvInteract(ItemD instance){
 		plugin = instance;
 	}
 	public void onPlayerInteract(PlayerInteractEvent event){
