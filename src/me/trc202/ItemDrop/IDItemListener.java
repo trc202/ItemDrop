@@ -17,7 +17,7 @@ public class IDItemListener extends PlayerListener {
 				if(plugin.blockdisabled.contains(event.getItemDrop().getItemStack().getTypeId())) //Checks to see if item dropped is bedrock
 				{
 					player.sendMessage(ChatColor.RED + "offending item destroyed"); //Notify's the player
-					event.getItemDrop().remove(); //Removes bedrock
+					event.getItemDrop().remove(); //Removes block upon drop
 				}
 				else
 				{

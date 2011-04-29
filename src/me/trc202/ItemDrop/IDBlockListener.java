@@ -27,7 +27,7 @@ public class IDBlockListener extends BlockListener{
 		}
 		else
 		{
-			//block placed is not bedrock
+			//block placed is not nonallowed block
 		}
 	}
 }
