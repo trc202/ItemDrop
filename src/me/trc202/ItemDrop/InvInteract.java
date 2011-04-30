@@ -21,7 +21,7 @@ public class InvInteract extends PlayerListener {
 				Block myblock = event.getClickedBlock();
 				if(myblock.getTypeId() == 54 || myblock.getTypeId() == 61 || myblock.getTypeId() == 62 || myblock.getTypeId() == 23)
 				{
-					player.sendMessage(ChatColor.RED + "You clicked a chest, furnace, or despencer!");
+					//player.sendMessage(ChatColor.RED + "You clicked a chest, furnace, or despencer!");
 					for (int counter = 0; counter < plugin.blockdisabled.size(); counter = counter+1) 
 					{   
 					    if(player.getInventory().contains(plugin.blockdisabled.get(counter)))
