@@ -23,6 +23,7 @@ public class ItemD extends JavaPlugin {
 	private final InvInteract InvListener = new InvInteract(this);
 	private final IDPickListener PickListener = new IDPickListener(this);
 	private final IDBlockListener BlockListener = new IDBlockListener(this);
+	private final IDBreakListener BlockBreakListener = new IDBreakListener(this);
 	private static final Logger log = Logger.getLogger("Minecraft");
 	public static PermissionHandler Permissions = null;
 	List<Integer> blockdisabled = new ArrayList<Integer>(); //Contains all blocks disabled by ItemDrop
@@ -35,6 +36,7 @@ public class ItemD extends JavaPlugin {
 		pm.registerEvent(Event.Type.PLAYER_INTERACT, InvListener, Event.Priority.Normal, this);
 		pm.registerEvent(Event.Type.PLAYER_PICKUP_ITEM, PickListener, Event.Priority.Normal, this);
 		pm.registerEvent(Event.Type.BLOCK_PLACE, BlockListener, Event.Priority.Normal, this);
+		pm.registerEvent(Event.Type.BLOCK_BREAK, BlockBreakListener, Event.Priority.Normal, this);
 		IDEnable = 1;
 		setupPermissions();
 		//String myfilelocation = "plugins/ItemDrop/dblocks.txt";
