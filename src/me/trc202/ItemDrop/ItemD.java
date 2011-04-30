@@ -6,7 +6,10 @@ import java.util.logging.Logger;
 
 import com.nijiko.permissions.PermissionHandler;
 import com.nijikokun.bukkit.Permissions.Permissions;
+
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
@@ -48,9 +51,7 @@ public class ItemD extends JavaPlugin {
 			    while ((strLine = br.readLine()) != null)   //read line until it reaches the null character
 			    {
 			      // Print the content on the console
-			    	int blockIntTmp = Integer.parseInt(strLine);
-			    	blockdisabled.add(new Integer(blockIntTmp)); //Put blocks on 
-			      log.info(strLine);
+			    	setnewblock(strLine); //Put blocks in list
 			    }
 			   //Close the input stream
 			    in.close();
@@ -59,7 +60,7 @@ public class ItemD extends JavaPlugin {
 			 log.info("Error: " + e.getMessage()); //Print error message to console if there is one
 			    }
 			    String numberblocksloaded = Integer.toString(blockdisabled.size()); //Convert blockdisabled to string for use in blocks loaded
-		log.info("Item drop 1.0 enabled, " + numberblocksloaded + " blocks loaded"); //Show enable message & list blocks loaded
+		log.info(getDescription().getName() + " " + getDescription().getVersion()+ " is loaded " + numberblocksloaded + " block(s) loaded"); //Show enable message & list blocks loaded
 	}
 	public void onDisable() 
 	{
@@ -98,7 +99,9 @@ public class ItemD extends JavaPlugin {
 			}
 		}
 	}
-	public boolean check(CommandSender sender, String permNode)
+	
+public boolean check(CommandSender sender, String permNode)
+
 	{
 		if (sender instanceof Player)
 		{
@@ -125,4 +128,106 @@ public class ItemD extends JavaPlugin {
 			return false;
 		}
 	}	
+	
+	
+	@Override
+	public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args)
+	{
+		if ((command.getName().equalsIgnoreCase("itemd")) || (command.getName().equalsIgnoreCase("itemdrop"))) //Check to see if the sender sent the itemdrop argument
+		{
+			if (sender instanceof Player) //Checks to see if sender is a player
+			{	
+				Player player = (Player) sender;
+				if (check(player, "ItemDrop.add")) //Player has permission to add/remove items
+				{
+					if (args[0].equalsIgnoreCase("add")) //Add block
+					{
+							player.sendMessage(ChatColor.RED + "Item id " + args[1] + " added");
+							setnewblock(args[1]);
+							return true;
+					
+					}
+					else if(args[0].equalsIgnoreCase("remove")) //Remove block
+					{
+						removeblock(args[1]);
+						player.sendMessage("Block removed");
+					}
+					else if(args[0].equalsIgnoreCase("list"))
+					{
+						player.sendMessage(ChatColor.RED + "The disabled blocks are: " + blockdisabled.toString());
+						return true;
+					}
+					else //Player did not send the correct argument
+					{
+						return false;
+					}
+				}
+				else //Player has no permission
+				{
+					if(args[0].equalsIgnoreCase("list")) //Allows players who do not have the required permissions to see disabled blocks
+					{
+						player.sendMessage(ChatColor.RED + "The disabled blocks are: " + blockdisabled.toString()); //Sends a message to the player
+						return true; //Report that the command was entered successfully
+					}
+					
+					return false; //Report that the command was not entered successfully
+				}
+			}
+			else //Sender is console
+			{
+				if(args[0].equalsIgnoreCase("add"))
+				{
+					setnewblock(args[1]); //add new block id
+					log.info("item " + args[1] + " added");
+					return true;
+				}
+				else if(args[0].equalsIgnoreCase("remove"))
+				{
+					removeblock(args[1]);
+					log.info("Block removed");
+					return true;
+				}
+				if(args[0].equalsIgnoreCase("list"))
+				{
+					log.info("The disabled blocks are: " + blockdisabled.toString());
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			
+			}
+			return false;
+		}
+		else //Sender entered the wrong command
+		{
+			return false;
+		}
+	}
+	public void setnewblock(int blockid) //Accepts int's to add to blockdisabled
+	{
+		if (!blockdisabled.contains(blockid)) //Only add the element if it does not allready exist in the list
+		{
+			blockdisabled.add(new Integer(blockid)); //Adds new int to blockdisabled
+		}
+		return;
+	}
+	public void setnewblock(String blockid) //Accepts strings and converts it to int and calls setnewitem to place it into list blockdisabled
+	{
+		int newblockid = Integer.parseInt(blockid); //Converts string into int (needs a way to check for errors)
+		setnewblock(newblockid); //calls setnewblock
+		return;
+		
+	}
+	public void removeblock(String blockr)
+	{
+		int removeblockid = Integer.parseInt(blockr);
+		if (blockdisabled.contains(removeblockid))
+		{
+			blockdisabled.remove(blockdisabled.indexOf(removeblockid));
+		}
+		
+	}
+
 }

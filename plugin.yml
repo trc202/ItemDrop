@@ -1,4 +1,13 @@
 name: ItemDrop
 main: me.trc202.ItemDrop.ItemD
 version: 1.0
+author: trc202
 commands:
+  itemd:
+    description: Allows users to add items to the list
+    aliases: itemdrop
+    usage: |
+           Incorrect usage of /<command>. Examples:
+           /<command> add <blockid> - Allows you to set the block id that is disabled
+           /<command> remove <blockid> - Removes specified block id from the list
+           /<command> list - Lists all disabled block id's
