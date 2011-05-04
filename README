@@ -15,7 +15,8 @@ The plugin stores the list of blacklisted blocks in a file ".../plugins/ItemDrop
 
 
 TODO:
-	Only destroy items when they are moved into a chest
+	Disallow players from picking up blacklisted items in a chest.
+	After the previous is done allow players to keep blacklisted items when clicking a chest
 	Destroy items on death
 	Stop spamming users when they try to pickup an item
 	Error handling with files
